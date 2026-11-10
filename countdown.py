@@ -7,13 +7,18 @@ Por último queremos que cuando el numero sea 0 la cuenta atras acabe y haga kab
 
 Ahora añadimos una def para "intentar desactivar la bomba. Ponemos una condición que el número sea par.
 """ 
+import time
+import json
+import random
+with open ("color.json", "r") as archivo:
+    data=json.load(archivo)
 
 
 def intentar_desactivar():
     cable= input("Ingrese el color y cable que quieres cortar: ")
 
-    if cable.lower()=="rojo":
-        print("No puedes pringao")
+    if cable.lower()==random.choice(data["colores"]):
+        print("Bomba desactivada suertudo")
         return True
     
     else:
@@ -21,9 +26,10 @@ def intentar_desactivar():
 
 
 for number in range(10,-1,-1):
-
+    print(number)
+    time.sleep(1)
  #Cuando sea un numero par, llamar a a funcion intentar desactivar y si devuevle True hago break
-    if number%2==0:
+    if number==8 or number==2:
         if intentar_desactivar():
             break
 
@@ -31,6 +37,5 @@ for number in range(10,-1,-1):
         print("...")
     if number <8 and number >2:    
         continue
-    print(number)
     if number==0:
-        print("KABOM")
+        print("KABOM YA ESTA AQUÍ LA GUERRA")
